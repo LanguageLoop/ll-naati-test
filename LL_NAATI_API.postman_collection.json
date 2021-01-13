@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "53456141-86e3-44c8-8ec7-1a440476c09e",
+		"name": "LL_NAATI_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Certifications v1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a3787542-7c5d-49c1-becd-ca8cd738ef73",
+						"exec": [
+							"pm.environment.set(\"PrivateKey\",\"CB8A70AD6CEA46A3A97CA83046D49A70\")",
+							"pm.environment.set(\"PublicKey\",\"DDC9BD6EA77C420F9FB5FCC09952A5CA\")",
+							"pm.environment.set(\"hmacKey\",\"NAATI DDC9BD6EA77C420F9FB5FCC09952A5CA:dFDpVf78Hatd0v0WTbEa49hhNdZgXactgJ7jCpkTZXA=:3113ddc2-5721-43d9-9d42-f68044922fd5:1609802943\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1021220c-f9c8-4413-ba11-81de0884f606",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+							"pm.test(\"Response code is 0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.errorCode).to.eql(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{hmacKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/1.0/public/Certifications?PractitionerId=CPN6PD01C",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"1.0",
+						"public",
+						"Certifications"
+					],
+					"query": [
+						{
+							"key": "PractitionerId",
+							"value": "CPN6PD01C"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lookups",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "555cbde7-e4b4-4980-890f-c41d0e0e1a6e",
+						"exec": [
+							"pm.environment.set(\"PrivateKey\",\"CB8A70AD6CEA46A3A97CA83046D49A70\")",
+							"pm.environment.set(\"PublicKey\",\"DDC9BD6EA77C420F9FB5FCC09952A5CA\")",
+							"pm.environment.set(\"hmacKey\",\"NAATI DDC9BD6EA77C420F9FB5FCC09952A5CA:RBjj0LvpfyMJDoEGxSLWaBepxUaFVYeIEXXYQpv+sGc=:98f0d408-86a2-426b-ad8d-1fe40ef1589e:1609803383\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "18fa2e14-de2d-4fd1-be37-b5f2ffa53e4d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+							"pm.test(\"Response code is 0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"     pm.expect(jsonData.Results.length).to.be.above(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{hmacKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/2.0/public/Lookups?request=%7BLookupId%3A3%7D",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"2.0",
+						"public",
+						"Lookups"
+					],
+					"query": [
+						{
+							"key": "request",
+							"value": "%7BLookupId%3A3%7D"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PractitionersCount Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "67af9daa-8273-42df-9c10-d1a967fe3330",
+						"exec": [
+							"pm.environment.set(\"PrivateKey\",\"CB8A70AD6CEA46A3A97CA83046D49A70\")",
+							"pm.environment.set(\"PublicKey\",\"DDC9BD6EA77C420F9FB5FCC09952A5CA\")",
+							"pm.environment.set(\"hmacKey\",\"NAATI DDC9BD6EA77C420F9FB5FCC09952A5CA:LzZg9mlWAdR/FnBiLwo+X6znrrNW6qAJ/nxp/uIeYog=:dbec74d3-5fe4-4b0f-89b0-9d9acce8240f:1609803545\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "acda2d18-2ddf-4319-9924-c317b101dc67",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+							"pm.test(\"Response code is 0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.ErrorCode).to.eql(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{hmacKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/2.0/public/PractitionersCount?request=%7B%22Filters%22%3A%5B%7B%22FilterId%22%3A6%2C%22Values%22%3A%5B%22607%22%2C%22608%22%2C%221394%22%2C+%22757%22%2C%22758%22%5D%7D%5D%2C%22RandomSeed%22%3A%22937836%22%7D",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"2.0",
+						"public",
+						"PractitionersCount"
+					],
+					"query": [
+						{
+							"key": "request",
+							"value": "%7B%22Filters%22%3A%5B%7B%22FilterId%22%3A6%2C%22Values%22%3A%5B%22607%22%2C%22608%22%2C%221394%22%2C+%22757%22%2C%22758%22%5D%7D%5D%2C%22RandomSeed%22%3A%22937836%22%7D"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
